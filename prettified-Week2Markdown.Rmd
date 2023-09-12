@@ -1,21 +1,24 @@
 ---
-title: "Challenges"
+title: "prettified-Week2Markdown"
 author: "Ritika"
-date: '`r Sys.Date()`'
+date: "`r Sys.Date()`"
 output: html_document
 ---
 
-## Summary
 
-This is Ritika Sibal's R Markdown File for Modules 3,4 & 5. Work will be seperated by modules, and relevant notes have been added. 
+# Summary
+
+This is Ritika Sibal's R Markdown File for Modules 3,4 & 5. Both work and notes have been seperated by modules where relevant
 
 ## Module 4 Notes
-The following work is for Module 4.
+
+A matrix is a collection of vectors stored together, can only have one data type
+
 ```{r Module 4}
 m<-matrix(data=c(1,2,3,4), nrow=2, ncol=2)
 ```
-Matrix is a collection of vectors stored together, can only have one data type
-Note: Matrices are filled column wise. If you want them to be filled row wise use the *byrow=TRUE* flag (last input argument)
+
+> NOTE Matrices are filled column wise. If you want them to be filled row wise use the *byrow=TRUE* flag (last input argument)
 
 You can also bind vectors of same length togther row wise *rbind(vector1, vector2)* or col wise *cbind(vector1, vector2)*
 
@@ -75,7 +78,9 @@ l <- list(s, m, b)  # this puts them all together as a list
 l[1:2]  # here we're slicing our list so it just has the first and second elements. LIST SLICING
 ```
 
-Data frames are good at showing tabular data. Use *cbind()* or *rbind()* to add more rows or cols. Note that the frame is more efficient for strings because internally R assigns int values to the unique string (like an enum)
+Data frames are good at showing tabular data. Use *cbind()* or *rbind()* to add more rows or cols. 
+
+> NOTE that the frame is more efficient for strings because internally R assigns int values to the unique string (like an enum)
 
 R had special values, keep track of them! 
 
@@ -137,8 +142,8 @@ str(df_m3)
 ```
 
 ## Module 5
-Note that to install XLConnect, you will need to download & install Java and install.package("rJava") first (on Macs)
+> NOTE that to install XLConnect, you will need to download & install Java and install.package("rJava") first (on Macs)
 
 You will also need to install *install.packages("httpuv")* for dropbox section incase you see a bad request popup
 
-NOTE: Shared Dropbox links like this one will take you to a webpage that has the data embedded… to get the raw data you need to change the end of the link from dl=0 to dl=1 or raw=1. That’s what the next line of code does:
+> NOTE Shared Dropbox links like this one will take you to a webpage that has the data embedded… to get the raw data you need to change the end of the link from dl=0 to dl=1 or raw=1. That’s what the next line of code does:
