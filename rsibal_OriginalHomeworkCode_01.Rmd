@@ -2,7 +2,12 @@
 title: "rsibal_OriginalHomeworkCode_01"
 author: "Ritika"
 date: "`r Sys.Date()`"
-output: html_document
+output: 
+  html_document:
+      toc: true
+      number_sections: true
+      toc_float: true
+      theme: cerulean
 ---
 
 
