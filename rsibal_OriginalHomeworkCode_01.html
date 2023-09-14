@@ -11,9 +11,9 @@
 
 <meta name="author" content="Ritika" />
 
-<meta name="date" content="2023-09-12" />
+<meta name="date" content="2023-09-14" />
 
-<title>prettified-Week2Markdown</title>
+<title>rsibal_OriginalHomeworkCode_01</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,9 +350,9 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">prettified-Week2Markdown</h1>
+<h1 class="title toc-ignore">rsibal_OriginalHomeworkCode_01</h1>
 <h4 class="author">Ritika</h4>
-<h4 class="date">2023-09-12</h4>
+<h4 class="date">2023-09-14</h4>
 
 </div>
 
@@ -360,7 +360,8 @@ display: none;
 <div id="summary" class="section level1">
 <h1>Summary</h1>
 <p>This is Ritika Sibal’s R Markdown File for Modules 3,4 &amp; 5. Both
-work and notes have been seperated by modules where relevant</p>
+work and notes have been separated by modules where relevant. Challenges
+location in second half of file</p>
 <div id="module-4-notes" class="section level2">
 <h2>Module 4 Notes</h2>
 <p>A matrix is a collection of vectors stored together, can only have
@@ -373,6 +374,8 @@ row wise use the <em>byrow=TRUE</em> flag (last input argument)</p>
 <p>You can also bind vectors of same length togther row wise
 <em>rbind(vector1, vector2)</em> or col wise <em>cbind(vector1,
 vector2)</em></p>
+<div id="module-4-notes-1" class="section level3">
+<h3>Module 4 Notes 1</h3>
 <pre class="r"><code>v1 &lt;- c(1, 2, 3, 4)
 v2 &lt;- c(6, 7, 8, 9)
 m&lt;-cbind(v1, v2)</code></pre>
@@ -382,6 +385,9 @@ m&lt;-cbind(v1, v2)</code></pre>
 of rows in index 1 and number of cols in index 2</p>
 <p><em>str()</em> is used to compactly display the internal structure of
 an R object. Example seen below:</p>
+</div>
+<div id="module-4-notes-2" class="section level3">
+<h3>Module 4 Notes 2</h3>
 <pre class="r"><code>str(m)</code></pre>
 <pre><code>##  num [1:4, 1:2] 1 2 3 4 6 7 8 9
 ##  - attr(*, &quot;dimnames&quot;)=List of 2
@@ -390,6 +396,9 @@ an R object. Example seen below:</p>
 <p>Arrays, on the other hand comprise of both vectors (1D) and matrices
 (2D). Must have same atomic data class. An example of a 3D array is seen
 below</p>
+</div>
+<div id="module-4-notes-3" class="section level3">
+<h3>Module 4 Notes 3</h3>
 <pre class="r"><code>a &lt;- array(data = 1:90, dim = c(5, 6, 3))
 a</code></pre>
 <pre><code>## , , 1
@@ -421,6 +430,9 @@ a</code></pre>
 <p>To index into an array, vector or matrix you can use square brackets
 <em>[]</em> with the index/indices within the brackets (can highlight a
 subset too)</p>
+</div>
+<div id="module-4-notes-4" class="section level3">
+<h3>Module 4 Notes 4</h3>
 <pre class="r"><code>v &lt;- 1:100 
 v[1:15] # First 15 elements</code></pre>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15</code></pre>
@@ -435,6 +447,9 @@ columns 4:8 was assigned the first vector value and the second row was
 assigned the second.</p>
 <p>Also note that the numeric vector becomes of type char when setting
 any row/col value to a char/string</p>
+</div>
+<div id="module-4-notes-5" class="section level3">
+<h3>Module 4 Notes 5</h3>
 <pre class="r"><code>m &lt;- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
 m[2:5, 4:8] &lt;- c(20, 19, 18, 17)
 m[2:5, 4:8] &lt;- matrix(data = c(20:1), nrow = 4, ncol = 5, byrow = TRUE)
@@ -446,6 +461,9 @@ index into the matrix.</p>
 <p>You can also name elements in the list using the <em>names()</em>
 function. EX: <em>names(list) &lt;- c(“name 1”, “name 2”, “name 3”)</em>
 and use <em>list$name1</em> to slice that value in the list</p>
+</div>
+<div id="module-4-notes-6" class="section level3">
+<h3>Module 4 Notes 6</h3>
 <pre class="r"><code>s &lt;- c(&quot;this&quot;, &quot;is&quot;, &quot;a&quot;, &quot;vector&quot;, &quot;of&quot;, &quot;strings&quot;)  # here we have a vector
 m &lt;- matrix(data = 1:40, nrow = 5, ncol = 8)  # this is a matrix
 b &lt;- FALSE  #and this is a logical statement
@@ -476,18 +494,36 @@ for R to express NaN (for not a number) is used when R cannot express
 the results of a calculation , e.g., when you try to take the square
 root of a negative number</p>
 </div>
+</div>
 <div id="module-4-challenge" class="section level2">
 <h2>Module 4 Challenge</h2>
+<div id="module-4-challenge-1" class="section level3">
+<h3>Module 4 Challenge 1</h3>
 <pre class="r"><code>u_string=&quot;Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed.&quot;
+# gsub removes the punctuation!
 u_string&lt;-gsub(&quot;[[:punct:]]&quot;,&quot;&quot;,u_string)
+# I choose to use strsplit() instead of (the suggested) str_split() based on the information found
+# https://stackoverflow.com/questions/7367284/inconsistent-behavior-between-str-split-and-strsplit
+
+# Separate the string using a space deliminator
 u_vector&lt;-strsplit(u_string, &quot; &quot;)[[1]]
+# Alternatively, I could have done:
+# u_string&lt;-gsub(&quot;[[:punct:]]&quot;,&quot;&quot;,u_string) %&gt;%  strsplit(, &quot; &quot;)[[1]]
 u_vector[seq(from=3,to=length(u_vector),by=3)]</code></pre>
 <pre><code>## [1] &quot;Buck&quot;    &quot;from&quot;    &quot;bearing&quot; &quot;of&quot;      &quot;which&quot;   &quot;and&quot;     &quot;lay&quot;</code></pre>
+</div>
+<div id="module-4-challenge-2" class="section level3">
+<h3>Module 4 Challenge 2</h3>
 <pre class="r"><code>m &lt;- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
 x&lt;-m[,c(2,3,6)] # Extract columns 2,3 &amp; 6
 x&lt;-m[6:8,] # Extract rows 6 to 8 
 x&lt;-m[2:6, 2:9] # Extract row2col2 to row6col9</code></pre>
-<pre class="r"><code>a&lt;-array(data=400:1, dim=c(5,5,4,4))
+</div>
+<div id="module-4-challenge-3" class="section level3">
+<h3>Module 4 Challenge 3</h3>
+<pre class="r"><code># Create the array
+a&lt;-array(data=400:1, dim=c(5,5,4,4))
+# Get all the indexed values
 a[1,1,1,2]</code></pre>
 <pre><code>## [1] 300</code></pre>
 <pre class="r"><code>a[2,3,2,]</code></pre>
@@ -499,7 +535,11 @@ a[1,1,1,2]</code></pre>
 ## [3,]  148  143  138  133  128
 ## [4,]  147  142  137  132  127
 ## [5,]  146  141  136  131  126</code></pre>
-<pre class="r"><code>Platyrrhini &lt;- c(&quot;Cebidae&quot;, &quot;Atelidae&quot;, &quot;Pitheciidae&quot;)
+</div>
+<div id="module-4-challenge-4" class="section level3">
+<h3>Module 4 Challenge 4</h3>
+<pre class="r"><code># This section was just copying the example and changing the names of the primates.
+Platyrrhini &lt;- c(&quot;Cebidae&quot;, &quot;Atelidae&quot;, &quot;Pitheciidae&quot;)
 Catarrhini &lt;- c(&quot;Cercopithecidae&quot;, &quot;Hylobatidae&quot;, &quot;Hominidae&quot;)
 Anthropoidea &lt;- list(Platyrrhini, Catarrhini)
 names(Anthropoidea) &lt;- list(&quot;Platyrrhini&quot;, &quot;Catarrhini&quot;)
@@ -540,15 +580,24 @@ Primates</code></pre>
 ## 
 ## $Strepsirhini$Lorisoidea
 ## [1] &quot;Lorisidae&quot; &quot;Galagidae&quot;</code></pre>
-<pre class="r"><code>m3 &lt;- matrix(c(3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), 5, 3, byrow=TRUE)
+</div>
+<div id="module-4-challenge-5" class="section level3">
+<h3>Module 4 Challenge 5</h3>
+<pre class="r"><code># use byrow=TRUE to make sure we are loading by ROW
+m3 &lt;- matrix(c(3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), 5, 3, byrow=TRUE)
+# Coerce the matrix to a data frame.
 df_m3&lt;-as.data.frame(m3)
+# Coerce the second column to be logical-valued. The follow is evaluates df_m3[,2]==1 first and sets it to df_m3[,2]
 df_m3[,2]=df_m3[,2]==1
+# Coerce the third column to be factor-valued
 df_m3[,3]=as.factor(df_m3[,3])
+# Take a look at the structure to make sure everything looks right!
 str(df_m3)</code></pre>
 <pre><code>## &#39;data.frame&#39;:    5 obs. of  3 variables:
 ##  $ V1: num  3 23 33 42 41
 ##  $ V2: logi  FALSE TRUE TRUE FALSE FALSE
 ##  $ V3: Factor w/ 2 levels &quot;1&quot;,&quot;2&quot;: 1 2 1 1 2</code></pre>
+</div>
 </div>
 <div id="module-5" class="section level2">
 <h2>Module 5</h2>
@@ -557,12 +606,12 @@ str(df_m3)</code></pre>
 install Java and install.package(“rJava”) first (on Macs)</p>
 </blockquote>
 <p>You will also need to install <em>install.packages(“httpuv”)</em> for
-dropbox section incase you see a bad request popup</p>
+dropbox section in case you see a bad request popup</p>
 <blockquote>
-<p>NOTE Shared Dropbox links like this one will take you to a webpage
-that has the data embedded… to get the raw data you need to change the
-end of the link from dl=0 to dl=1 or raw=1. That’s what the next line of
-code does:</p>
+<p>NOTE Shared Dropbox links will take you to a webpage that has the
+data embedded… to get the raw data you need to change the end of the
+link from dl=0 to dl=1 or raw=1. That’s what the next line of code
+does:</p>
 </blockquote>
 </div>
 </div>
