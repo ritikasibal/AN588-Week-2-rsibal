@@ -1,0 +1,202 @@
+---
+title: "rsibal_OriginalHomeworkCode_01"
+author: "Ritika"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+      toc: true
+      number_sections: true
+      toc_float: true
+      theme: cerulean
+---
+
+*I really liked how you changed the theme of your html doc. Will definitely be implementing it in my own code.*
+
+# Summary
+
+This is Ritika Sibal's R Markdown File for Modules 3,4 & 5. Both work and notes have been separated by modules where relevant. Challenges location in second half of file
+
+## Module 4 Notes
+
+A matrix is a collection of vectors stored together, can only have one data type
+
+```{r Module 4}
+m<-matrix(data=c(1,2,3,4), nrow=2, ncol=2)
+```
+
+> NOTE Matrices are filled column wise. If you want them to be filled row wise use the *byrow=TRUE* flag (last input argument)
+
+You can also bind vectors of same length togther row wise *rbind(vector1, vector2)* or col wise *cbind(vector1, vector2)*
+
+### Module 4 Notes 1
+
+```{r Module 4 Notes 1}
+v1 <- c(1, 2, 3, 4)
+v2 <- c(6, 7, 8, 9)
+m<-cbind(v1, v2)
+```
+
+Use the following functions for Metadata in matrices: *class()*, *dim()*, *names()*, *rownames()*, *colnames()* with *dim()* returns a 1x2 vector with number of rows in index 1 and number of cols in index 2
+
+*str()* is used to compactly display the internal structure of an R object. Example seen below:
+
+### Module 4 Notes 2
+
+```{r Module 4 Notes 2}
+str(m)
+```
+
+Arrays, on the other hand comprise of both vectors (1D) and matrices (2D). Must have same atomic data class. An example of a 3D array is seen below
+
+### Module 4 Notes 3
+
+```{r Module 4 Notes 3}
+a <- array(data = 1:90, dim = c(5, 6, 3))
+a
+```
+
+To index into an array, vector or matrix you can use square brackets *[]* with the index/indices within the brackets (can highlight a subset too)
+
+### Module 4 Notes 4
+
+```{r Module 4 Notes 4}
+v <- 1:100 
+v[1:15] # First 15 elements
+v[c(2, 4, 6, 8, 10)] # Set of values to subset, where the values in the brackets reflect the indices to subset, not the actual values
+```
+
+For matrices you need to double index (row and then col) *m[row #, col#]*
+
+You can also assign values in the matrix. Remember the format is *matrix[row,col] \<- value*
+
+The following example was interesting to me, where the first row from columns 4:8 was assigned the first vector value and the second row was assigned the second.
+
+Also note that the numeric vector becomes of type char when setting any row/col value to a char/string
+
+### Module 4 Notes 5
+
+```{r Module 4 Notes 5}
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
+m[2:5, 4:8] <- c(20, 19, 18, 17)
+m[2:5, 4:8] <- matrix(data = c(20:1), nrow = 4, ncol = 5, byrow = TRUE)
+m[, 8] <- c("a", "b")
+```
+
+Lists, can be used to group together a mix of R structures (list can contain a matrix, string array etc). Extracting requires double brackets e.g *l[[2]]* to index the matrix, and *l[[2]][2, 6]* to index into the matrix.
+
+You can also name elements in the list using the *names()* function. EX: *names(list) \<- c("name 1", "name 2", "name 3")* and use *list\$name1* to slice that value in the list
+
+### Module 4 Notes 6
+
+```{r Module 4 Notes 6}
+s <- c("this", "is", "a", "vector", "of", "strings")  # here we have a vector
+m <- matrix(data = 1:40, nrow = 5, ncol = 8)  # this is a matrix
+b <- FALSE  #and this is a logical statement
+l <- list(s, m, b)  # this puts them all together as a list
+l[1:2]  # here we're slicing our list so it just has the first and second elements. LIST SLICING
+```
+
+Data frames are good at showing tabular data. Use *cbind()* or *rbind()* to add more rows or cols.
+
+> NOTE that the frame is more efficient for strings because internally R assigns int values to the unique string (like an enum)
+
+R had special values, keep track of them!
+
+NA (for not available) is used for missing data. Many statistical functions offer the possibility to include as an argument na.rm=TRUE ("remove NAs") so that NAs are excluded from a calculation. Inf (and -Inf) is used when the result of a numerical calculation is too extreme for R to express NaN (for not a number) is used when R cannot express the results of a calculation , e.g., when you try to take the square root of a negative number
+
+## Module 4 Challenge
+
+### Module 4 Challenge 1
+
+*I liked how you commented out what you were doing with every line. Made it easy to interpret and follow along.*
+
+```{r Module 4 Challenge 1}
+u_string="Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed."
+# gsub removes the punctuation!
+u_string<-gsub("[[:punct:]]","",u_string)
+# I choose to use strsplit() instead of (the suggested) str_split() based on the information found
+# https://stackoverflow.com/questions/7367284/inconsistent-behavior-between-str-split-and-strsplit
+
+# Separate the string using a space deliminator
+u_vector<-strsplit(u_string, " ")[[1]]
+# Alternatively, I could have done:
+# u_string<-gsub("[[:punct:]]","",u_string) %>%  strsplit(, " ")[[1]]
+u_vector[seq(from=3,to=length(u_vector),by=3)]
+```
+
+*I like how you used the pipe connectors. Really organized, really simple.*
+
+### Module 4 Challenge 2
+
+```{r Module 4 Challenge 2}
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
+x<-m[,c(2,3,6)] # Extract columns 2,3 & 6
+x<-m[6:8,] # Extract rows 6 to 8 
+x<-m[2:6, 2:9] # Extract row2col2 to row6col9
+```
+
+*I don't know if this is just user error on my part, but when I run the code, it doesn't print out the results.*
+
+### Module 4 Challenge 3
+
+```{r Module 4 Challenge 3}
+# Create the array
+a<-array(data=400:1, dim=c(5,5,4,4))
+# Get all the indexed values
+a[1,1,1,2]
+a[2,3,2,]
+a[1:5,1:5,3,3]
+```
+
+### Module 4 Challenge 4
+
+```{r Module 4 Challenge 4}
+# This section was just copying the example and changing the names of the primates.
+Platyrrhini <- c("Cebidae", "Atelidae", "Pitheciidae")
+Catarrhini <- c("Cercopithecidae", "Hylobatidae", "Hominidae")
+Anthropoidea <- list(Platyrrhini, Catarrhini)
+names(Anthropoidea) <- list("Platyrrhini", "Catarrhini")
+
+Tarsioidea <- c("Tarsiidae")
+names(Tarsioidea) <- list("Tarsiidae")
+
+Haplorhini <- list(Anthropoidea, Tarsioidea)
+names(Haplorhini) <- list("Anthropoidea", "Tarsioidea")
+
+Lemuroidea <- c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae",
+    "Daubentoniidae")
+Lorisoidea <- c("Lorisidae", "Galagidae")
+Strepsirhini <- list(Lemuroidea, Lorisoidea)
+names(Strepsirhini) <- list("Lemuroidea", "Lorisoidea")
+
+Primates <- list(Haplorhini, Strepsirhini)
+names(Primates) <- list("Haplorhini", "Strepsirhini")
+Primates
+```
+
+*I really liked how you did this challenge. It definitely looks more organized than mine. I was having trouble distinguishing the lists so I'll be sure to implement some of these techniques into my work.*
+
+### Module 4 Challenge 5
+
+```{r Module 4 Challenge 5}
+# use byrow=TRUE to make sure we are loading by ROW
+m3 <- matrix(c(3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), 5, 3, byrow=TRUE)
+# Coerce the matrix to a data frame.
+df_m3<-as.data.frame(m3)
+# Coerce the second column to be logical-valued. The follow is evaluates df_m3[,2]==1 first and sets it to df_m3[,2]
+df_m3[,2]=df_m3[,2]==1
+# Coerce the third column to be factor-valued
+df_m3[,3]=as.factor(df_m3[,3])
+# Take a look at the structure to make sure everything looks right!
+str(df_m3)
+```
+
+*I was having trouble understanding what the module wanted. I didn't realize you could put the different values back into the original df. Great job!*
+
+## Module 5
+
+> NOTE that to install XLConnect, you will need to download & install Java and install.package("rJava") first (on Macs)
+
+You will also need to install *install.packages("httpuv")* for dropbox section in case you see a bad request popup
+
+> NOTE Shared Dropbox links will take you to a webpage that has the data embedded... to get the raw data you need to change the end of the link from dl=0 to dl=1 or raw=1. That's what the next line of code does:
